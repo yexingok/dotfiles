@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/yexing/.oh-my-zsh
+# export ZSH=/Users/yexing/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -85,14 +86,22 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vim='mvim -v'
-alias gvim='mvim'
+case `uname` in 
+    Darwin)
+        alias vim='mvim -v'
+        alias gvim='mvim'
 
-# Customize:
-# Tell ls to be colourful
-export CLICOLOR=1
-export LSCOLORS=Exfxcxdxbxegedabagacad
+        # Customize:
+        # Tell ls to be colourful
+        export CLICOLOR=1
+        export LSCOLORS=Exfxcxdxbxegedabagacad
 
-# Tell grep to highlight matches
-export GREP_OPTIONS='--color=auto'
+        # Tell grep to highlight matches
+        export GREP_OPTIONS='--color=auto'
+        ;;
+    Linux)
+        echo 'Linux'
+        ;;
+esac
+
 
