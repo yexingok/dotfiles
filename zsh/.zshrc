@@ -53,7 +53,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(aws git osx pip python virtualenv zsh-syntax-highlighting)
-plugins=(aws brew git osx pip python web-search z)
+plugins=(aws git osx pip python web-search z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,7 +100,11 @@ case `uname` in
         export GREP_OPTIONS='--color=auto'
         ;;
     Linux)
-        echo 'Linux'
+        alias awscn='aws --profile cn'
+        alias awsjp='aws --profile jp '
+        alias awssgp='aws --profile sgp'
+        alias awsyx='aws --profile sgp'
+        alias ssh='ssh -A'
         ;;
 esac
 

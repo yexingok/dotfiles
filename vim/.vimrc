@@ -69,7 +69,7 @@ Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tell-k/vim-autopep8'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " 插件列表结束
 call vundle#end()
 filetype plugin indent on
@@ -80,10 +80,10 @@ if has('gui_running')
 else
     set background=dark
 endif
-colorscheme solarized
+"colorscheme solarized
 "colorscheme desert
 "colorscheme molokai
-"colorscheme phd
+colorscheme phd
 let g:solarized_termcolors=256
 
 " 指定配色方案是256色
