@@ -103,9 +103,9 @@ case `uname` in
         alias awscn='aws --profile cn'
         alias awsjp='aws --profile jp '
         alias awssgp='aws --profile sgp'
-        alias awsyx='aws --profile yx'
-        alias ssh='ssh -A'
         ;;
 esac
 
+alias awsyx='aws --profile yx'
+alias ssh='ssh -A'
 
