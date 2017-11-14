@@ -1,0 +1,18 @@
+#screen config file, please put in your ~/.screenrc
+screen 0
+
+hardstatus on
+hardstatus alwayslastline
+#hardstatus string "%{=kw}%{g}[ %{G}%H %{g}] %{w}%1` %{g}[%=%{=kw}%{w}%-w%{Y}[%{W}%n-%t%{Y}]%{w}%+w%=%{g}][%l][ %{w}%Y-%m-%d %{Y}%c:%s %{g}]"
+hardstatus string "%{= br}%{g}[%{G}$USER @ %H%{g}]%{w}%1`%{g}[%=%{=kw}%{w}%-w%{Y}[%{W}%n-%t%{Y}]%{w}%+w%=%{g}][%l][%{w}%Y-%m-%d %{Y}%c%{+B}:%{-}%s%{g}]"
+
+term xterm
+
+altscreen on
+
+autodetach on
+vbell off
+#i don't like welcome.
+startup_message off
+
+shell "/usr/bin/zsh"
