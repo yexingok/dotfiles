@@ -3,11 +3,11 @@
 case `uname` in 
     Darwin)
         echo 'MacOS'
-        brew install zsh macvim stow tig ctags wget 
+        brew install zsh macvim stow tig ctags wget zsh-completions
         ;;
     Linux)
         echo 'Make sure we have required packages on our Linux'
-        sudo yum install -y git tig vim zsh ctags screen tmux 
+        sudo yum install -y git tig vim zsh ctags screen tmux stow
         ;;
 esac
 
