@@ -100,12 +100,14 @@ case `uname` in
         export GREP_OPTIONS='--color=auto'
         ;;
     Linux)
-        alias awscn='aws --profile cn'
-        alias awsjp='aws --profile jp '
-        alias awssgp='aws --profile sgp'
+
         ;;
 esac
 
-alias awsyx='aws --profile yx'
 alias ssh='ssh -A'
+
+alias awsyx='aws --profile yx'
+alias awscn='aws --profile cn'
+alias awsjp='aws --profile jp '
+alias awssgp='aws --profile sgp'
 
