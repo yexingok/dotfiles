@@ -100,7 +100,7 @@ case `uname` in
         export GREP_OPTIONS='--color=auto'
         ;;
     Linux)
-
+        export GPG_TTY=$(tty)
         ;;
 esac
 
