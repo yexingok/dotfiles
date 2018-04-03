@@ -2,7 +2,6 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-# export ZSH=/Users/yexing/.oh-my-zsh
 export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -52,8 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(aws git osx pip python virtualenv zsh-syntax-highlighting)
-plugins=(aws git osx pip python web-search z)
+plugins=(aws git pip python z web-search rsync vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
