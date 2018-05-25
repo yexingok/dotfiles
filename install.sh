@@ -7,7 +7,14 @@ case `uname` in
         ;;
     Linux)
         echo 'Make sure we have required packages on our Linux'
-        sudo yum install -y git tig vim zsh ctags screen tmux stow curl wget
+        if [ -r /etc/debian_version  ] ; then
+            #debian or ubuntu:
+            sudo apt-get install git tig vim zsh ctags screen tmux stow curl wget
+        fi
+        if [ -r /etc/redhat-release ] ; then
+            #Redhat or Centos:
+            sudo yum install -y git tig vim zsh ctags screen tmux stow curl wget
+        fi
         ;;
 esac
 

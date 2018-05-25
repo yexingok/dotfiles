@@ -109,3 +109,5 @@ alias awscn='aws --profile cn'
 alias awsjp='aws --profile jp '
 alias awssgp='aws --profile sgp'
 
+export PATH=${PATH}:~/.local/bin/
+
