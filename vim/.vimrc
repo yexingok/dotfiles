@@ -5,8 +5,6 @@ let mapleader=";"
 vnoremap <Leader>y "+y
 " 设置快捷键将系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
-" 定义快捷键关闭当前分割窗口
-nmap <Leader>q :q<CR>
 " 定义快捷键保存当前窗口内容
 nmap <Leader>w :w<CR>
 " 定义快捷键保存所有窗口内容并退出 vim
@@ -25,6 +23,8 @@ nnoremap <Leader>jw <C-W>j
 nmap <Leader>M %
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" 编辑YAML文件时，设置缩进为2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " 开启实时搜索功能
 set incsearch
@@ -41,34 +41,34 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-"Colorscheme:
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
+" Colorscheme:
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'nathanaelkane/vim-indent-guides'
-"BookMark:
+" BookMark:
 Plugin 'kshenoy/vim-signature'
 Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
 Plugin 'majutsushi/tagbar'
-"Project:
+" Project:
 Plugin 'vim-scripts/DfrankUtil'
 Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/vimprj'
-"Search:
+" Search:
 Plugin 'dyng/ctrlsf.vim'
-"Multiple_section:
+" Multiple_section:
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
+" Python:
+Plugin 'python-mode/python-mode'
 
-"Plugin 'vim-scripts/DrawIt'
 Plugin 'SirVer/ultisnips'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'tell-k/vim-autopep8'
 " Plugin 'Valloric/YouCompleteMe'
 " 插件列表结束
 call vundle#end()
@@ -80,9 +80,9 @@ if has('gui_running')
 else
     set background=dark
 endif
-"colorscheme solarized
-"colorscheme desert
-"colorscheme molokai
+" colorscheme solarized
+" colorscheme desert
+" colorscheme molokai
 colorscheme phd
 let g:solarized_termcolors=256
 
@@ -260,9 +260,6 @@ vmap <S-SPACE> <Plug>(wildfire-water)
 " 适用于哪些结对符
 let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
-" 调用 gundo 树
-nnoremap <Leader>ud :GundoToggle<CR>
-
 " easymotion 快速移动 
 " <Leader><Leader> fa (key)
 
@@ -278,9 +275,6 @@ nnoremap <Leader>ud :GundoToggle<CR>
 map <leader>ss :mksession! my.vim<cr> :wviminfo! my.viminfo<cr>
 " 恢复快捷键
 map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
-
-" TODO
-nmap <leader>m :wa<CR>:python <CR>:cw<CR>
 
 " 快速注释：
 " <leader>cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /、/；
@@ -311,20 +305,9 @@ set autoread
 " 顶部底部保持3行距离
 set scrolloff=4
 
-" 一键格式化为python pep8 标准
-nmap <leader>mf :Autopep8<CR> 
-" 一键调试
-nmap <leader>mm :call RunPython()<CR>
-function RunPython()
-  let mp = &makeprg
-  let ef = &errorformat
-  let exeFile = expand("%:t")
-  setlocal makeprg=python\ -u
-  set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-  silent make %
-  copen
-  let &makeprg = mp
-  let &errorformat = ef
-endfunction
-
+" Python python-mode
+" To enable python3 syntax check:
+" let g:pymode_python = 'python3'
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+let g:pymode_python = 'python3'
 
