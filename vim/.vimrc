@@ -309,5 +309,5 @@ set scrolloff=4
 " To enable python3 syntax check:
 " let g:pymode_python = 'python3'
 let g:pymode_rope_goto_definition_bind = "<C-]>"
-let g:pymode_python = 'python2'
+let g:pymode_python = 'python'
 
