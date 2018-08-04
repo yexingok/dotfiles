@@ -1,6 +1,11 @@
 " Yexing leader key:
 let mapleader=";"
 
+" Temp fix for vim8 run python3.7 refer: https://github.com/vim/vim/issues/3117#issuecomment-402622616
+if has('python3')
+  silent! python3 1
+endif
+
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
 " 设置快捷键将系统剪贴板内容粘贴至 vim
@@ -309,5 +314,10 @@ set scrolloff=4
 " To enable python3 syntax check:
 " let g:pymode_python = 'python3'
 let g:pymode_rope_goto_definition_bind = "<C-]>"
-let g:pymode_python = 'python'
+
+if has('macunix')
+    let g:pymode_python = 'python3'
+else
+    let g:pymode_python = 'python'
+endif
 
