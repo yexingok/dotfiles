@@ -312,12 +312,43 @@ set scrolloff=4
 
 " Python python-mode
 " To enable python3 syntax check:
-" let g:pymode_python = 'python3'
-let g:pymode_rope_goto_definition_bind = "<C-]>"
 
 if has('macunix')
     let g:pymode_python = 'python3'
 else
     let g:pymode_python = 'python'
 endif
+
+" 更改rope绑定key
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+" 保存文件时自动删除无用空格
+let g:pymode_trim_whitespaces = 1
+" 设置默认python参数
+let g:pymode_options = 1
+" 设置默认行长度符合pep8标准 https://www.python.org/dev/peps/pep-0008/
+let g:pymode_options_max_line_length = 79 
+" 设置QuickFix窗口的最大，最小高度
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 10
+" 使用PEP8风格的缩进
+let g:pymode_indent = 1
+" 取消代码折叠
+let g:pymode_folding = 0
+" 启用python-mode内置的python文档，使用K进行查找
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+" 使用python-mode运行python代码
+let g:pymode_run = 1
+" 设置运行python快捷键
+let g:pymode_run_bind = '<Leader>r'
+" 使用python-mode设置断点
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+" 启用python语法检查
+let g:pymode_lint = 1
+" 修改后保存时进行检查
+let g:pymode_lint_on_write = 1
+" 编辑时进行检查
+let g:pymode_lint_on_fly = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
 
