@@ -311,13 +311,8 @@ set autoread
 set scrolloff=4
 
 " Python python-mode
-" To enable python3 syntax check:
-
-if has('macunix')
-    let g:pymode_python = 'python3'
-else
-    let g:pymode_python = 'python'
-endif
+" UltiSnips require python3:
+let g:pymode_python = 'python3'
 
 " 更改rope绑定key
 let g:pymode_rope_goto_definition_bind = "<C-]>"
