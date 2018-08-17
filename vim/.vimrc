@@ -3,7 +3,7 @@ let mapleader=";"
 
 " Temp fix for vim8 run python3.7 refer: https://github.com/vim/vim/issues/3117#issuecomment-402622616
 if has('python3')
-  silent! python3 1
+   silent! python3 1
 endif
 
 " 设置快捷键将选中文本块复制至系统剪贴板
@@ -285,13 +285,6 @@ map <leader>rs :source my.vim<cr> :rviminfo my.viminfo<cr>
 " <leader>cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /、/；
 " <leader>cu，取消选中文本块的注释。
 
-" 快速编辑结对符 快捷键
-map <SPACE> <Plug>(wildfire-fuel)
-vmap <S-SPACE> <Plug>(wildfire-water)
-
-" 适用于哪些结对符
-let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
-
 " 其他设置
 " 去掉输入错误提示声音
 set noeb
@@ -346,4 +339,5 @@ let g:pymode_lint_on_write = 1
 " 编辑时进行检查
 let g:pymode_lint_on_fly = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']
-
+" 排序Autofix信息
+let g:pymode_lint_sort = ['E','C','I']
