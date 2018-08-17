@@ -99,6 +99,9 @@ case `uname` in
         ;;
     Linux)
         export GPG_TTY=$(tty)
+        if [ "$TERM" = "screen"  ] ; then
+            export TERM=xterm-256color
+        fi
         ;;
 esac
 
