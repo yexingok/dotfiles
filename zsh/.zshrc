@@ -96,6 +96,9 @@ case `uname` in
 
         # Tell grep to highlight matches
         export GREP_OPTIONS='--color=auto'
+
+        # Use UTSC Homebrew bottles
+        export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
         ;;
     Linux)
         export GPG_TTY=$(tty)
