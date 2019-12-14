@@ -115,6 +115,11 @@ alias awscn='aws --profile cn'
 alias awsjp='aws --profile jp '
 alias awssgp='aws --profile sgp'
 
+#proxy alias:
+alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1081"
+alias unsetproxy="unset ALL_PROXY"
+alias checkmyip="curl -i https://ip.cn"
+
 if [ -d ~/.local/bin ] ; then
     export PATH=${PATH}:~/.local/bin/
 fi
