@@ -1,9 +1,15 @@
 #!/bin/bash
 
 cd "$(brew --repo)"
-git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
 cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+
+#ustc repo slow for me
+#cd "$(brew --repo)"
+#git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+#cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+#git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 
 #uncomment below to revert:
 #cd "$(brew --repo)"
