@@ -68,7 +68,7 @@ Plugin 'scrooloose/nerdcommenter'
 " Python:
 Plugin 'python-mode/python-mode'
 
-Plugin 'SirVer/ultisnips'
+" Plugin 'SirVer/ultisnips' "disable for centos7
 Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
