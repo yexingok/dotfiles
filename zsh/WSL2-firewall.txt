@@ -1,0 +1,37 @@
+## Keep some notes：
+
+# If win10 blocks all network from WSL2, add a network profile WSL below to enable the vEthernet (WSL) (ie: above proxy settings no response)
+# PS C:\WINDOWS\system32> $myIp = (ubuntu2204 run "cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2")
+#PS C:\WINDOWS\system32> $myIp
+# 172.19.112.1
+# PS C:\WINDOWS\system32> New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
+# If need to access port on win10 local, ie: 127.0.0.1:1081, can add a port forwarding without edit firewall settings(like below), or enable port from win10 firewall public profile    # PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenport=1081 listenaddress=$myIp connectport=1081 connectaddress=127.0.0.1
+
+## Read more from:
+https://logi.im/script/achieving-access-to-files-and-resources-on-the-network-between-win10-and-wsl2.html
+
+# 获取 WSL2 IP
+PS C:\WINDOWS\system32> wsl -- hostname -I
+172.23.232.213
+
+# Windows 监听 8080，转发到 WSL2 8080
+PS C:\WINDOWS\system32> netsh interface portproxy add v4tov4 listenport=8080 connectaddress=172.23.232.213 connectport=8080
+
+# Windows 放行 8080 入站
+PS C:\WINDOWS\system32> New-NetFirewallRule -DisplayName "Allow Inbound TCP Port 8080" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 8080
+
+# 查看端口转发规则
+PS C:\WINDOWS\system32> netsh interface portproxy show v4tov4
+
+侦听 ipv4:                 连接到 ipv4:
+
+地址            端口        地址            端口
+--------------- ----------  --------------- ----------
+*               8080        172.23.232.213  8080
+
+# 删除端口转发规则
+PS C:\WINDOWS\system32> netsh interface portproxy delete v4tov4 listenport=8080
+
+# 删除防火墙入站规则
+PS C:\WINDOWS\system32> Remove-NetFirewallRule -DisplayName "Allow Inbound TCP Port 8080"
+

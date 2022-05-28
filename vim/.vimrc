@@ -58,7 +58,7 @@ Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
 Plugin 'majutsushi/tagbar'
 " Project:
 Plugin 'vim-scripts/DfrankUtil'
-Plugin 'vim-scripts/indexer.tar.gz'
+" Plugin 'vim-scripts/indexer.tar.gz'
 Plugin 'vim-scripts/vimprj'
 " Search:
 Plugin 'dyng/ctrlsf.vim'
