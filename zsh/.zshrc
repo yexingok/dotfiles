@@ -148,21 +148,21 @@ if [ -d ~/.local/bin ] ; then
     export PATH=${PATH}:~/.local/bin/
 fi
 
-if [[ $(uname --kernel-release | grep WSL) ]] ; then
+if [ $(uname --kernel-release | grep WSL) ] ; then
     # For loading SSH key and Proxy within WSL
     /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
     source $HOME/.keychain/$HOST-sh
 
     # Enable proxy for WSL2
     # Read more for WSL2 network: https://docs.microsoft.com/en-us/windows/wsl/networking 
-    setproxy-wsl2() {
+    setproxy() {
         local host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
         export ALL_PROXY="socks5://${host_ip}:1081"
         export all_proxy="socks5://${host_ip}:1081"
         #echo -e "Acquire::socks::Proxy \"socks5://${host_ip}:1081\";" | sudo tee -a /etc/apt/apt.conf > /dev/null
         curl ip.sb
     }
-    unsetproxy-wsl2() {
+    unsetproxy() {
         unset ALL_PROXY
         unset all_proxy
         #sudo sed -i -e '/Acquire::socks::Proxy/d' /etc/apt/apt.conf
@@ -186,9 +186,6 @@ if [ -d ~/.local/bin ] ; then
     export PATH=${PATH}:~/.local/bin/
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Load NVM
 if [ -d ~/.nvm ] ; then
     export NVM_DIR="$HOME/.nvm"
@@ -196,3 +193,5 @@ if [ -d ~/.nvm ] ; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
