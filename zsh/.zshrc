@@ -152,6 +152,33 @@ if [ $(uname --kernel-release | grep WSL) ] ; then
     # For loading SSH key and Proxy within WSL
     /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
     source $HOME/.keychain/$HOST-sh
+    # Handle gpg sign in WSL2 - cache pass for a while 
+    # cache time edit in ~/.gnupg/gpg-agent.conf
+    gpg-checkttl() {
+        local CONF=~/.gnupg/gpg-agent.conf
+        if [ -f $CONF ] ; then
+            if [ $(grep -q "default-cache-ttl 3600" $CONF) ] ; then
+                echo "default-cache-ttl 3600" >> $CONF
+                echo "max-cache-ttl 3600" >> $CONF
+            fi
+        else
+            mkdir -p ~/.gnupg
+            echo "default-cache-ttl 3600" > $CONF
+            echo "max-cache-ttl 3600" >> $CONF
+        fi
+    }
+    gpg-login() {
+        export GPG_TTY=$TTY
+        # 对 "test" 这个字符串进行 gpg 签名，这时候需要输密码。
+        # 然后密码就会被缓存，下次就不用输密码了。
+        # 重定向输出到 null，就不会显示到终端中。
+        echo "test" | gpg --clearsign > /dev/null 2>&1
+        echo "Login"
+    }
+
+    gpg-logout() {
+        echo RELOADAGENT | gpg-connect-agent
+    }
 
     # Enable proxy for WSL2
     # Read more for WSL2 network: https://docs.microsoft.com/en-us/windows/wsl/networking 
