@@ -214,6 +214,7 @@ if [ -d ~/.local/bin ] ; then
 fi
 
 # Load NVM
+# Install refer https://github.com/nvm-sh/nvm#installing-and-updating 
 if [ -d ~/.nvm ] ; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
