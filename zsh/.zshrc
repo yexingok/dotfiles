@@ -148,10 +148,11 @@ if [ -d ~/.local/bin ] ; then
     export PATH=${PATH}:~/.local/bin/
 fi
 
-if [ $(uname --kernel-release | grep WSL) ] ; then
+if [ $(uname -r | grep "WSL") ] ; then
     # For loading SSH key and Proxy within WSL
     /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
     source $HOME/.keychain/$HOST-sh
+
     # Handle gpg sign in WSL2 - cache pass for a while 
     # cache time edit in ~/.gnupg/gpg-agent.conf
     gpg-checkttl() {
@@ -175,12 +176,11 @@ if [ $(uname --kernel-release | grep WSL) ] ; then
         echo "test" | gpg --clearsign > /dev/null 2>&1
         echo "Login"
     }
-
     gpg-logout() {
         echo RELOADAGENT | gpg-connect-agent
     }
 
-    # Enable proxy for WSL2
+    # Handle use local proxy for WSL2
     # Read more for WSL2 network: https://docs.microsoft.com/en-us/windows/wsl/networking 
     setproxy() {
         local host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
