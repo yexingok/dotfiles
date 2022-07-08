@@ -6,3 +6,5 @@
 	editor = vim
 #[commit]
 #	gpgsign = true
+[pull]
+	rebase = true
