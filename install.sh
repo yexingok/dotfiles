@@ -9,11 +9,11 @@ case `uname` in
         echo 'Make sure we have required packages on our Linux'
         if [ -r /etc/debian_version  ] ; then
             #debian or ubuntu:
-            sudo apt-get install git tig vim zsh screen tmux stow curl wget unzip keychain
+            sudo apt-get install ag git tig vim zsh screen tmux stow curl wget unzip keychain
         fi
         if [ -r /etc/redhat-release ] ; then
             #Redhat or Centos:
-            sudo yum install -y git tig vim zsh screen tmux stow curl wget unzip
+            sudo yum install -y git tig vim zsh screen tmux stow curl wget unzip epel-release.noarch the_silver_searcher
         fi
         ;;
 esac

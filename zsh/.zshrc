@@ -54,6 +54,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+#
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -62,6 +63,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     # z+ 快速跳转
     z
+    # Search code very fast with The Silver Searcher ag: https://github.com/ggreer/the_silver_searcher#installing 
+    ag
     aws 
     # git 补全
     git 
@@ -71,6 +74,10 @@ plugins=(
     extract 
     python 
     rsync 
+    # Prevent any code from actually running while pasting, so you can review
+    safe-paste
+    # Add enhancement for Tmux
+    tmux
     # vi操作模式
     vi-mode 
     # 彩色man手册
@@ -152,8 +159,8 @@ if [ -d ~/.local/bin ] ; then
 fi
 
 if [ $(uname -r | grep "WSL") ] ; then
-    # For loading SSH key and Proxy within WSL
-    /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
+    # For loading SSH key and Proxy within WSL, add more ssh keys to end if needed
+    /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa 
     source $HOME/.keychain/$HOST-sh
 
     # Handle gpg sign in WSL2 - cache pass for a while 
