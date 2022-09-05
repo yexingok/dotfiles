@@ -9,7 +9,7 @@ case `uname` in
         echo 'Make sure we have required packages on our Linux'
         if [ -r /etc/debian_version  ] ; then
             #debian or ubuntu:
-            sudo apt-get install ag git tig vim zsh screen tmux stow curl wget unzip keychain
+            sudo apt-get install silversearcher-ag git tig vim zsh screen tmux stow curl wget unzip keychain
         fi
         if [ -r /etc/redhat-release ] ; then
             #Redhat or Centos:
@@ -48,4 +48,10 @@ done
 echo ""
 echo "Done! open vim and run plugin install:"
 echo ":PluginInstall"
+
+# Add following lines to ~/.ssh/config for compatible reason to access legacy machine:
+# Host some-host
+#    PubkeyAcceptedKeyTypes +ssh-rsa
+#    HostkeyAlgorithms +ssh-rsa
+#    AddKeysToAgent yes
 
