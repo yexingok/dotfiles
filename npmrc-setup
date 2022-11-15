@@ -1,0 +1,8 @@
+# Use nrm to switch repo 
+# npm install -g nrm --registry=https://registry.npmmirror.com
+# nrm ls 
+# npm config set registry https://registry.npmmirror.com 
+# npm config get registry
+registry=https://r.cnpmjs.org/
+home=https://cnpmjs.org
+
