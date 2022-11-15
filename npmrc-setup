@@ -3,6 +3,11 @@
 # nrm ls 
 # npm config set registry https://registry.npmmirror.com 
 # npm config get registry
-registry=https://r.cnpmjs.org/
-home=https://cnpmjs.org
-
+registry=https://registry.npmmirror.com/
+home=https://npm.taobao.org
+# npm cheat list use @serverless-stack/cli as an example
+# npm view @serverless-stack/cli version # list lastest version
+# npm view @serverless-stack/cli versions # list all version
+# npm info @serverless-stack/cli@1.17.1 # list given version
+# npm update @serverless-stack --save # update prod package
+# npm update @serverless-stack --save-dev # update dev package
