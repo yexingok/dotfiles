@@ -14,8 +14,14 @@ export ZSH=${HOME}/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# If not Centos, we use power10k, if centos we use robbyrussell
+
+if [ ! -f /etc/redhat-release ] ; then
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+else
+    # Centos
+    ZSH_THEME="robbyrussell"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -40,7 +46,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -158,11 +164,11 @@ if [ -d ~/.local/bin ] ; then
     export PATH=${PATH}:~/.local/bin/
 fi
 
-if [ $(uname -r | grep "WSL") ] ; then
-    # For loading SSH key and Proxy within WSL, add more ssh keys to end if needed
-    /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa 
-    source $HOME/.keychain/$HOST-sh
+# For loading SSH key and Proxy within WSL, add more ssh keys to end if needed
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa 
+source $HOME/.keychain/$HOST-sh
 
+if [ $(uname -r | grep "WSL") ] ; then
     # Handle gpg sign in WSL2 - cache pass for a while 
     # cache time edit in ~/.gnupg/gpg-agent.conf
     gpg-checkttl() {

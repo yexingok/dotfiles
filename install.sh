@@ -13,7 +13,7 @@ case `uname` in
         fi
         if [ -r /etc/redhat-release ] ; then
             #Redhat or Centos:
-            sudo yum install -y git tig vim zsh screen tmux stow curl wget unzip epel-release.noarch the_silver_searcher
+            sudo yum install -y git tig vim zsh screen tmux stow curl wget unzip epel-release.noarch the_silver_searcher keychain
         fi
         ;;
 esac
