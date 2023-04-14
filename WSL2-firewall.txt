@@ -32,3 +32,13 @@ netsh interface portproxy delete v4tov4 listenport=1081 listenaddress=172.29.80.
 ## Read more from:
 https://logi.im/script/achieving-access-to-files-and-resources-on-the-network-between-win10-and-wsl2.html
 
+## if you need to let local network access the WSL2 ports, do following as admin permission:
+
+First, you will need to open a port in your machine to be able to access it from your network.
+
+netsh advfirewall firewall add rule name="Allow LAN connections to port 5000" dir=in action=allow protocol=TCP localport=5000 # assume 5000 is the port you want to open
+
+After you open the port (5000 in my case) you will need to make port forwarding from this port to the port that your app is listening on in the WSL2.
+
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=5000 connectaddress=localhost connectport=<the port that your app is listening on>
+
