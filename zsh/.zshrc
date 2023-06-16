@@ -198,6 +198,8 @@ if [ $(uname -r | grep "WSL") ] ; then
 
     # Handle use local proxy for WSL2
     # Read more for WSL2 network: https://docs.microsoft.com/en-us/windows/wsl/networking 
+    # Use vscode with proxy:
+    # code --proxy-server="socks5://172.30.176.1:1081" 
     setproxy() {
         local host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
         export ALL_PROXY="socks5://${host_ip}:1081"
