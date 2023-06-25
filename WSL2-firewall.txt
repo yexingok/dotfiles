@@ -6,9 +6,21 @@
 
 ipconfig 
 
-# 2.Allow WSL from system firewall
+# 2.Allow WSL to access all win10 host ports
 
-New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
+# New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
+# Use below to allow the WSL ip network range:
+# in WSL2 hosts, get source ip
+ip addr 
+# Use the source ip range: ie: 172.30.190.134/20 on https://www.sojson.com/convert/subnetmask.html to get the network range, in this case, it is: 172.30.176.0
+# on win10, run ipconfig to get the win10 WSL network card IP, in this case, it should be 172.30.176.1, which is the first IP from WSL network, result match each other.
+# run below to allow the IP range from firewall, it should work permanently.
+
+New-NetFirewallRule -DisplayName "WSL-允许WSL网段访问主机服务" -Description "允许WSL网段访问宿主机" -Direction Inbound -Action Allow -RemoteAddress 172.30.176.0/20 
+
+Refer:
+https://blog.csdn.net/qq12547345/article/details/125298666 
+https://learn.microsoft.com/en-us/powershell/module/netsecurity/new-netfirewallrule?view=windowsserver2022-ps
 
 # 3.Add port forwarding for firewall
 # This allow the WSL host use 192.168.240.1:1081 to access the win10 local port: 127.0.0.1:1081 
