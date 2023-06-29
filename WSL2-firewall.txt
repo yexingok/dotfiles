@@ -54,3 +54,10 @@ After you open the port (5000 in my case) you will need to make port forwarding 
 
 netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=5000 connectaddress=localhost connectport=<the port that your app is listening on>
 
+# 6. github access with proxy:
+add following to:  ~/.ssh/config
+
+Host github.com
+    User abc
+    ProxyCommand nc -v -x 172.30.144.1:1081 %h %p
+
