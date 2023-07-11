@@ -165,7 +165,9 @@ if [ -d ~/.local/bin ] ; then
 fi
 
 # For loading SSH key and Proxy within WSL, add more ssh keys to end if needed
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa 
+KEYCHAIN=`which keychain`
+${KEYCHAIN} -q --nogui $HOME/.ssh/id_rsa 
+#/usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa 
 source $HOME/.keychain/$HOST-sh
 
 if [ $(uname -r | grep "WSL") ] ; then
