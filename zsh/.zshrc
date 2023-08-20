@@ -207,13 +207,13 @@ if [ $(uname -r | grep "WSL") ] ; then
         export ALL_PROXY="socks5://${host_ip}:1081"
         export all_proxy="socks5://${host_ip}:1081"
         #echo -e "Acquire::socks::Proxy \"socks5://${host_ip}:1081\";" | sudo tee -a /etc/apt/apt.conf > /dev/null
-        curl ip.sb
+        curl myip.ipip.net
     }
     unsetproxy() {
         unset ALL_PROXY
         unset all_proxy
         #sudo sed -i -e '/Acquire::socks::Proxy/d' /etc/apt/apt.conf
-        curl ip.sb
+        curl myip.ipip.net
     }
     # If win10 blocks all network from WSL2, add a network profile WSL below to enable the vEthernet (WSL) (ie: above proxy settings no response)
     # PS C:\WINDOWS\system32> $myIp = (ubuntu2204 run "cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2")
