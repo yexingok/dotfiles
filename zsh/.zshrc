@@ -203,7 +203,8 @@ if [ $(uname -r | grep "WSL") ] ; then
     # Use vscode with proxy:
     # code --proxy-server="socks5://172.30.176.1:1081" 
     setproxy() {
-        local host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+        #local host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+        local host_ip=$(route -n | grep UG | awk '{print $2}')
         export http_proxy="http://${host_ip}:1081"
         export https_proxy="http://${host_ip}:1081"
         export all_proxy="socks5://${host_ip}:1081"
