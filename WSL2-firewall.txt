@@ -61,3 +61,14 @@ Host github.com
     User abc
     ProxyCommand nc -v -x 172.30.144.1:1081 %h %p
 
+6. Check used ports from windows
+netstat -aon|findstr 3306   # check pid from port, this will output PID
+tasklist | findstr pid  # check task name PID, so we can name which app use the port
+
+# Check the target ports not in exlude port range
+netsh interface ipv4 show excludedportrange protocol=tcp
+
+# From Admin cmd restart winnat service
+net stop winnat
+net srart winnat 
+
